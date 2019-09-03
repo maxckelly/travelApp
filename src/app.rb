@@ -1,11 +1,10 @@
 require 'tty-prompt'
 require 'tty-spinner'
 require 'geocoder'
-require_relative 'class.rb'
+require_relative 'user.rb'
+require_relative 'travel.rb'
 
 prompt = TTY::Prompt.new
-
-# user_one = Users.new()
 
 # The below collects the user information and adds it into the has use_info_input
 user_info_input = prompt.collect do 
@@ -17,6 +16,10 @@ user_info_input = prompt.collect do
     end
     key(:password).mask("Please create a password:")
 end
+
+system('clear') # clear system of the above output.
+user = User.new(user_info_input) # User created in user class (user.rb)
+p user
 
 puts "Welcome #{user_info_input[:name]}! Please select one of the below options."
 
@@ -30,17 +33,34 @@ loop do
     end
 
     case 
-        when user_menu == "View my details"
+        when user_menu == "View my details" # This simply views the user details such as email, name etc..
             system('clear')
-            puts user_info_input
-        when user_menu == "View my trips"
+            puts user_info_input[:name]
+            puts user_info_input[:location]
+            puts user_info_input[:email]
+        when user_menu == "View my trips" # This section displays all the trips the user has created
             puts "Here are the trips"
-        when user_menu == "Create a trip"
-            puts "You're creating a trip"
+        when user_menu == "Create a trip" # This section creates a trip.
+            loop do 
+                trip_creation = prompt.collect do 
+                    key(:origin_destination).ask("Where will you be departing from?")
+                    key(:start_date_of_trip).ask("When will you be departing?")
+                    key(:end_date_of_trip).ask("What date will you be returning?")
+                    key(:destination).ask("Where will you be travelling too?")
+                end
+                destination_menu = prompt.select("Would you like to add a destination or finish trip creation?") do |menu|
+                    menu.choice "Add destination"
+                    menu.choice "Finish"
+                end
+                if (destination_menu == "Finish") # Breaks out of the loop that is in the user_menu
+                    break
+                end
+            end
         when user_menu == "Spin the globe"
             puts "Off we go!!!"
         when user_menu == "Exit app"
             break
     end
 end
+
 
