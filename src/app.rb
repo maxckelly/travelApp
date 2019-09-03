@@ -58,7 +58,9 @@ loop do
             end
         when user_menu == "Spin the globe"
             puts "Off we go!!!"
-        when user_menu == "Exit app"
+        when user_menu == "Exit app" # Breaks out of loop
+            system('clear')
+            puts "See you again"
             break
     end
 end
