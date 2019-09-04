@@ -6,11 +6,9 @@ require 'date'
 require_relative 'user.rb'
 require_relative 'travel.rb'
 require_relative 'trips.rb'
-# require_relative 'countries.json'
 require 'pry'
 
 prompt = TTY::Prompt.new
-# countries_json = ActiveSupport::JSON.decode("countries")
 
 # The below collects the user information and adds it into the has use_info_input
 user_info_input = prompt.collect do 
@@ -26,6 +24,7 @@ end
 system('clear') # clear system of the above output.
 user = User.new(user_info_input) # User created in user class (user.rb)
 trip = nil # This defines the varible trip and then reassigns the data down in the loop
+trip_array = []
 
 puts "Welcome #{user_info_input[:name]}! Please select one of the below options."
 
@@ -52,13 +51,16 @@ loop do
                     key(:destination).ask("Where will you be travelling too?")
                 end
                 
+                trip_array << trip_creation
+                puts trip_array
+
                 destination_menu = prompt.select("Would you like to add a destination or finish trip creation?") do |menu|
                     menu.choice "Add destination"
                     menu.choice "Finish"
                 end
 
                 if (destination_menu == "Finish") # Breaks out of the loop that is in the user_menu
-                    trip = Trips.new(trip_creation)
+                    trip = Trips.new(trip_array)
                     break
                 end
             end
@@ -72,5 +74,3 @@ loop do
             break
     end
 end
-
-puts user.email
