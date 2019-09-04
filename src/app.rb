@@ -3,6 +3,7 @@ require 'tty-spinner'
 require 'geocoder'
 require 'json'
 require 'date'
+require 'csv'
 require_relative 'user.rb'
 require_relative 'travel.rb'
 require_relative 'trips.rb'
@@ -34,8 +35,10 @@ loop do
         menu.choice "View my trips"
         menu.choice "Create a trip"
         menu.choice "Spin the globe"
+        menu.choice "Download Itinerary"
         menu.choice "Exit app"
     end
+
     case 
         when user_menu == "View my details" # This simply views the user details such as email, name etc..
             system('clear')
@@ -51,8 +54,7 @@ loop do
                     key(:destination).ask("Where will you be travelling too?")
                 end
                 
-                trip_array << trip_creation
-                puts trip_array
+                trip_array << trip_creation # Pushes trip_creation into array
 
                 destination_menu = prompt.select("Would you like to add a destination or finish trip creation?") do |menu|
                     menu.choice "Add destination"
@@ -60,14 +62,26 @@ loop do
                 end
 
                 if (destination_menu == "Finish") # Breaks out of the loop that is in the user_menu
-                    trip = Trips.new(trip_array)
+                    trip = Trips.new(trip_array) # Creates a new trip class
                     break
                 end
             end
         when user_menu == "View my trips" # This section displays all the trips the user has created
-            p trip
+            p trip 
         when user_menu == "Spin the globe"
+
+        when user_menu == "Download Itinerary"
+            TRIP_OUT = File.new("itinerary.csv", "w")
+                TRIP_OUT.puts(trip)
+                TRIP_OUT.puts(user)
+            TRIP_OUT.close
             
+            File.open(TRIP_OUT, "w") do |line|
+                line << trip
+                line << [user.name]
+                line << [user.location]
+                # line << user.email
+            end
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
             puts "See you again soon"
