@@ -4,13 +4,11 @@ require 'geocoder'
 require 'json'
 require 'date'
 require 'csv'
-require_relative 'user.rb'
-require_relative 'travel.rb'
-require_relative 'trips.rb'
+require_relative 'user_class.rb'
+require_relative 'travel_methods.rb'
+require_relative 'trips_class.rb'
 require 'pry'
 
-file = File.open "countries.json" # Loads the the countries.json file
-data = JSON.load file # Opens the countries.json file
 prompt = TTY::Prompt.new
 
 # The below collects the user information and adds it into the has use_info_input
