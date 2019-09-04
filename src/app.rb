@@ -53,7 +53,7 @@ loop do
                     key(:end_date_of_trip).ask("What date will you be returning?")
                     key(:destination).ask("Where will you be travelling too?")
                 end
-                
+            
                 trip_array << trip_creation # Pushes trip_creation into array
 
                 destination_menu = prompt.select("Would you like to add a destination or finish trip creation?") do |menu|
@@ -72,12 +72,16 @@ loop do
 
         when user_menu == "Download Itinerary"
 
+            prompt.select("Please select the trip you would like the itinary for", trip_array[0][:destination], filter: true)
+
             CSV.open("itinerary.csv", "a+") do |line|
-                the_line = ["Hi {user.name} below is your itinerary\n"]
-                line << the_line
-                # line << [user.name]
-                line << [user.location]
-                # line << user.email
+                welcome_line = ["Hi #{user.name} below is your itinerary"]
+                line << welcome_line
+                arriving_heading = ["DEPARTING"]
+                line << arriving_heading
+                departing_line = ["You will be departing from #{trip.origin_destination} on the #{trip.start_date_of_trip}"]
+                line << departing_line
+                
             end
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')

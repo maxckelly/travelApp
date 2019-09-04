@@ -1,6 +1,6 @@
-"Hi MAx below is your itinerary
-"
-sdg
-"Hi {user.name} below is your itinerary
-"
-Au
+Hi gre below is your itinerary
+DEPARTING
+"You will be departing from {:origin_destination=>""ff"", :start_date_of_trip=>""ff"", :end_date_of_trip=>""ff"", :destination=>""ff""} on the {:origin_destination=>""ff"", :start_date_of_trip=>""ff"", :end_date_of_trip=>""ff"", :destination=>""ff""}"
+Hi Max below is your itinerary
+DEPARTING
+"You will be departing from {:origin_destination=>""Melbourne"", :start_date_of_trip=>""fff"", :end_date_of_trip=>""ff"", :destination=>""Japan""} on the {:origin_destination=>""ff"", :start_date_of_trip=>""fff"", :end_date_of_trip=>""ff"", :destination=>""ff""}"
