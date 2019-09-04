@@ -7,9 +7,19 @@ require_relative 'travel_methods.rb'
 require_relative 'trips_class.rb'
 require_relative 'countries_method.rb'
 
-file = File.open "countries.json" # Loads the the countries.json file
+begin
+    file = File.open "countries.json" # Loads the the countries.json file    
+rescue => exception
+    puts "File does not exist"
+end
+
 data = JSON.load file # Opens the countries.json file
 prompt = TTY::Prompt.new
+
+name = ""
+def argv 
+    return argv_var = ARGV[0]
+end
 
 # The below collects the user information and adds it into the has use_info_input
 user_info_input = prompt.collect do 
@@ -43,12 +53,14 @@ loop do
             system('clear')
             puts user_info_input[:name]
             puts user_info_input[:email]
+            
         when user_menu == "Create a trip" # This section creates a trip.
+
             loop do 
                 trip_creation = prompt.collect do 
                     key(:origin_destination).ask("Where will you be departing from?")
                     key(:start_date_of_trip).ask("What date will you be departing? The date needs to be in day/month/year")
-                    key(:end_date_of_trip).ask("What date will you be returning?")
+                    key(:end_date_of_trip).ask("What date will you be returning? The date needs to be in day/month/year")
                     key(:destination).ask("Where will you be travelling too?")
                 end
             
@@ -64,14 +76,16 @@ loop do
                     break
                 end
             end
+
         when user_menu == "View my trips" # This section displays all the trips the user has created
+
             system('clear')
             puts Travel.individual_trips(trip_array)
 
             if (trip_array.empty?)
                 puts "You have no trips planned yet!"
             end
-            
+
         when user_menu == "Spin the globe"
 
             puts "-------------------------------"
