@@ -1,14 +1,11 @@
 require 'tty-prompt'
 require 'tty-spinner'
-require 'geocoder'
-require 'date'
 require 'csv'
 require 'json'
 require_relative 'user_class.rb'
 require_relative 'travel_methods.rb'
 require_relative 'trips_class.rb'
 require_relative 'countries_method.rb'
-require 'pry'
 
 file = File.open "countries.json" # Loads the the countries.json file
 data = JSON.load file # Opens the countries.json file
@@ -17,7 +14,6 @@ prompt = TTY::Prompt.new
 # The below collects the user information and adds it into the has use_info_input
 user_info_input = prompt.collect do 
     key(:name).ask("What is your name?")
-    key(:location).ask("What country do you call home?")
     key(:email).ask("Please enter in your email address:") do |q|
         q.validate(/\A\w+@\w+\.\w+\Z/)
         q.messages[:valid?] = "Invalid email address, please try again"
@@ -46,7 +42,6 @@ loop do
         when user_menu == "View my details" # This simply views the user details such as email, name etc..
             system('clear')
             puts user_info_input[:name]
-            puts user_info_input[:location]
             puts user_info_input[:email]
         when user_menu == "Create a trip" # This section creates a trip.
             loop do 
@@ -72,14 +67,18 @@ loop do
         when user_menu == "View my trips" # This section displays all the trips the user has created
             system('clear')
             puts Travel.individual_trips(trip_array)
+
+            if (trip_array.empty?)
+                puts "You have no trips planned yet!"
+            end
             
         when user_menu == "Spin the globe"
-            
+
             puts "-------------------------------"
             spinner = TTY::Spinner.new("[:spinner] We're spinning the globe...🌍 🌎 🌏 ", format: :spin_2)
             spinner.auto_spin # Automatic animation with default interval
             sleep(5) # Perform task
-            spinner.stop("\nYour off too...✈️ ️✈️  - #{Countries.countries(data).sample}") # Stop animation
+            spinner.stop("\nYour off too...✈️ ️✈️  - #{Countries.countries(data).sample}") # Stop animation # Also grabes the method from countries_method.rb
             puts "-------------------------------"
 
         when user_menu == "Download Itinerary"
