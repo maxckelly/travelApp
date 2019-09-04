@@ -1,5 +1,3 @@
-# require_relative 'app.rb'
-
 class User
     attr_accessor :name, :email, :password, :location
 

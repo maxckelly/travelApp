@@ -67,12 +67,14 @@ loop do
                 end
             end
         when user_menu == "View my trips" # This section displays all the trips the user has created
-            p trip 
+            system('clear')
+            puts Travel.individual_trips(trip_array)
+            
         when user_menu == "Spin the globe"
 
         when user_menu == "Download Itinerary"
 
-            csv_trip = prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
+            prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
 
             CSV.open("itinerary.csv", "a+", {headers: true}) do |line|
                 line << [1,trip_array[0][:origin_destination],trip_array[0][:start_date_of_trip],trip_array[0][:end_date_of_trip],trip_array[0][:destination]]
