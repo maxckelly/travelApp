@@ -74,9 +74,14 @@ loop do
             puts Travel.individual_trips(trip_array)
             
         when user_menu == "Spin the globe"
+            
             puts "-------------------------------"
-            puts Countries.countries(data).sample
+            spinner = TTY::Spinner.new("[:spinner] We're spinning the globe...🌍 🌎 🌏 ", format: :spin_2)
+            spinner.auto_spin # Automatic animation with default interval
+            sleep(5) # Perform task
+            spinner.stop("\nYour off too...✈️ ️✈️  - #{Countries.countries(data).sample}") # Stop animation
             puts "-------------------------------"
+
         when user_menu == "Download Itinerary"
 
             prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
