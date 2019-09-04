@@ -1,7 +1,6 @@
 require 'tty-prompt'
 require 'tty-spinner'
 require 'geocoder'
-require 'json'
 require 'date'
 require 'csv'
 require_relative 'user_class.rb'
