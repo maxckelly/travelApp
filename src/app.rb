@@ -72,16 +72,10 @@ loop do
 
         when user_menu == "Download Itinerary"
 
-            prompt.select("Please select the trip you would like the itinary for", trip_array[0][:destination], filter: true)
+            csv_trip = prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
 
-            CSV.open("itinerary.csv", "a+") do |line|
-                welcome_line = ["Hi #{user.name} below is your itinerary"]
-                line << welcome_line
-                arriving_heading = ["DEPARTING"]
-                line << arriving_heading
-                departing_line = ["You will be departing from #{trip.origin_destination} on the #{trip.start_date_of_trip}"]
-                line << departing_line
-                
+            CSV.open("itinerary.csv", "a+", {headers: true}) do |line|
+                line << [1,trip_array[0][:origin_destination],trip_array[0][:start_date_of_trip],trip_array[0][:end_date_of_trip],trip_array[0][:destination]]
             end
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
