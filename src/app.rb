@@ -3,11 +3,15 @@ require 'tty-spinner'
 require 'geocoder'
 require 'date'
 require 'csv'
+require 'json'
 require_relative 'user_class.rb'
 require_relative 'travel_methods.rb'
 require_relative 'trips_class.rb'
+require_relative 'countries_method.rb'
 require 'pry'
 
+file = File.open "countries.json" # Loads the the countries.json file
+data = JSON.load file # Opens the countries.json file
 prompt = TTY::Prompt.new
 
 # The below collects the user information and adds it into the has use_info_input
@@ -70,7 +74,9 @@ loop do
             puts Travel.individual_trips(trip_array)
             
         when user_menu == "Spin the globe"
-            puts 
+            puts "-------------------------------"
+            puts Countries.countries(data).sample
+            puts "-------------------------------"
         when user_menu == "Download Itinerary"
 
             prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
