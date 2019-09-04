@@ -1,12 +1,16 @@
 require 'tty-prompt'
 require 'tty-spinner'
 require 'geocoder'
+require 'json'
+require 'date'
 require_relative 'user.rb'
 require_relative 'travel.rb'
 require_relative 'trips.rb'
+# require_relative 'countries.json'
 require 'pry'
 
 prompt = TTY::Prompt.new
+# countries_json = ActiveSupport::JSON.decode("countries")
 
 # The below collects the user information and adds it into the has use_info_input
 user_info_input = prompt.collect do 
@@ -21,7 +25,7 @@ end
 
 system('clear') # clear system of the above output.
 user = User.new(user_info_input) # User created in user class (user.rb)
-trip = nil # This defines the vadrible trip and then reassigns the data down in the loop
+trip = nil # This defines the varible trip and then reassigns the data down in the loop
 
 puts "Welcome #{user_info_input[:name]}! Please select one of the below options."
 
@@ -43,7 +47,7 @@ loop do
             loop do 
                 trip_creation = prompt.collect do 
                     key(:origin_destination).ask("Where will you be departing from?")
-                    key(:start_date_of_trip).ask("When will you be departing?")
+                    key(:start_date_of_trip).ask("What date will you be departing? The date needs to be in day/month/year")
                     key(:end_date_of_trip).ask("What date will you be returning?")
                     key(:destination).ask("Where will you be travelling too?")
                 end
@@ -54,7 +58,6 @@ loop do
                 end
 
                 if (destination_menu == "Finish") # Breaks out of the loop that is in the user_menu
-                    binding.pry
                     trip = Trips.new(trip_creation)
                     break
                 end
@@ -62,10 +65,12 @@ loop do
         when user_menu == "View my trips" # This section displays all the trips the user has created
             p trip
         when user_menu == "Spin the globe"
-            puts "Off we go!!!"
+            
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
-            puts "See you again"
+            puts "See you again soon"
             break
     end
 end
+
+puts user.email
