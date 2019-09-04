@@ -71,17 +71,12 @@ loop do
         when user_menu == "Spin the globe"
 
         when user_menu == "Download Itinerary"
-            csv_header = ["User Name"]
-            
-            CSV.open("itinerary.csv", "a") do |line|
-                row_name = CSV::Row.new(csv_header, [])
-                row_location = CSV::Row.new(csv_header, [])
-                row_name["User Name"] = user.name
-                row_location["User Location"] = user.location
-                line << row_name
-                line << row_location
+
+            CSV.open("itinerary.csv", "a+") do |line|
+                the_line = ["Hi {user.name} below is your itinerary\n"]
+                line << the_line
                 # line << [user.name]
-                # line << [user.location]
+                line << [user.location]
                 # line << user.email
             end
         when user_menu == "Exit app" # Breaks out of loop
