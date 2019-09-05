@@ -6,6 +6,7 @@ require_relative 'user_class.rb'
 require_relative 'travel_methods.rb'
 require_relative 'trips_class.rb'
 require_relative 'countries_method.rb'
+require_relative 'argv_method.rb'
 
 begin
     file = File.open "countries.json" # Loads the the countries.json file    
@@ -56,10 +57,10 @@ loop do
                 trip_creation = prompt.collect do 
                     key(:origin_destination).ask("Where will you be departing from?")
                     key(:start_date_of_trip).ask("What date will you be departing? The date needs to be in day/month/year")
-                    # key(:end_date_of_trip).ask("What date will you be returning? The date needs to be in day/month/year")
+                    key(:end_date_of_trip).ask("What date will you be returning? The date needs to be in day/month/year")
                     key(:destination).ask("Where will you be travelling too?")
                 end
-            
+
                 trip_array << trip_creation # Pushes trip_creation into array
 
                 destination_menu = prompt.select("Would you like to add a destination or finish trip creation?") do |menu|
