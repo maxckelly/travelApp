@@ -1,2 +1,3 @@
-id,origin destination,start date of trip,end date of trip,destination1,Melbourne,12/09/20219,12/20/2019,Mexico
+id,origin destination,start date of trip,end date of trip,destination1
 1,Melbourne,06/12/2019,20/02/2020,Mexico
+2,gfg,gdf,gfd,gfd

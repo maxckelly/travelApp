@@ -1,12 +1,16 @@
+# gems
 require 'tty-prompt'
 require 'tty-spinner'
 require 'csv'
 require 'json'
+
+# files required
 require_relative 'user_class.rb'
-require_relative 'travel_methods.rb'
 require_relative 'trips_class.rb'
+require_relative 'travel_methods.rb'
 require_relative 'countries_method.rb'
 require_relative 'argv_method.rb'
+require_relative 'csv_methods.rb'
 
 begin
     file = File.open "countries.json" # Loads the the countries.json file    
@@ -97,10 +101,8 @@ loop do
         when user_menu == "Download Itinerary"
 
             prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
-
-            CSV.open("itinerary.csv", "a+", {headers: true}) do |line|
-                line << [1,trip_array[0][:origin_destination],trip_array[0][:start_date_of_trip],trip_array[0][:end_date_of_trip],trip_array[0][:destination]]
-            end
+            
+            write_to_csv(trip_array) # This calls the method from csv_methods.rb
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
             puts "See you again soon"
