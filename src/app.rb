@@ -5,12 +5,12 @@ require 'csv'
 require 'json'
 
 # files required
-require_relative 'user_class.rb'
-require_relative 'trips_class.rb'
-require_relative 'travel_methods.rb'
-require_relative 'countries_method.rb'
-require_relative 'argv_method.rb'
-require_relative 'csv_methods.rb'
+require_relative '../src/user_class.rb'
+require_relative '../src/trips_class.rb'
+require_relative '../src/travel_methods.rb'
+require_relative '../src/countries_method.rb'
+require_relative '../src/argv_method.rb'
+require_relative '../src/csv_methods.rb'
 
 begin
     file = File.open "countries.json" # Loads the the countries.json file    
@@ -46,6 +46,7 @@ loop do
         menu.choice "Create a trip"
         menu.choice "Spin the globe"
         menu.choice "Download Itinerary"
+        menu.choice "Search Flight Prices"
         menu.choice "Exit app"
     end
 
@@ -103,6 +104,7 @@ loop do
             prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
             
             write_to_csv(trip_array) # This calls the method from csv_methods.rb
+
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
             puts "See you again soon"
