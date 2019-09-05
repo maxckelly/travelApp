@@ -15,11 +15,7 @@ end
 
 data = JSON.load file # Opens the countries.json file
 prompt = TTY::Prompt.new
-
-name = ""
-def argv 
-    return argv_var = ARGV[0]
-end
+puts argv()
 
 # The below collects the user information and adds it into the has use_info_input
 user_info_input = prompt.collect do 
@@ -60,7 +56,7 @@ loop do
                 trip_creation = prompt.collect do 
                     key(:origin_destination).ask("Where will you be departing from?")
                     key(:start_date_of_trip).ask("What date will you be departing? The date needs to be in day/month/year")
-                    key(:end_date_of_trip).ask("What date will you be returning? The date needs to be in day/month/year")
+                    # key(:end_date_of_trip).ask("What date will you be returning? The date needs to be in day/month/year")
                     key(:destination).ask("Where will you be travelling too?")
                 end
             
@@ -74,6 +70,8 @@ loop do
                 if (destination_menu == "Finish") # Breaks out of the loop that is in the user_menu
                     trip = Trips.new(trip_array) # Creates a new trip class
                     break
+                else 
+                    puts "Please select one of the following options"
                 end
             end
 
