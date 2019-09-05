@@ -46,7 +46,6 @@ loop do
         menu.choice "Create a trip"
         menu.choice "Spin the globe"
         menu.choice "Download Itinerary"
-        menu.choice "Search Flight Prices"
         menu.choice "Exit app"
     end
 
@@ -100,10 +99,8 @@ loop do
             puts "-------------------------------"
 
         when user_menu == "Download Itinerary"
-
-            prompt.select("Please select the trip you would like the itinary for", Travel.create_destinations(trip_array), filter: true)
-            
-            write_to_csv(trip_array) # This calls the method from csv_methods.rb
+           
+            write_to_csv(trip_array, 'itinerary.csv') # This calls the method from csv_methods.rb
 
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
