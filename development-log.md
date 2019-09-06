@@ -45,8 +45,6 @@ class User
 end
 
 ```
-
-
 ### Thursday 5th September 2019
 
 - Today I worked through a number of things some being fixing up the CSV issue, I managed to create an incremental ID which when every trip has been created the ID number goes up. This was done with a Counter += 1. 
@@ -59,6 +57,6 @@ end
 
 - I also implemented the build.sh file this is creating a new directory called dist and moving the code from app.rb to that file. 
 
-- I have also been working on documentation this being the README.md file, user testing and more.
+- I have also been working on documentation in the README.md file, user testing and more.
 ### Friday 6th September 2019
 

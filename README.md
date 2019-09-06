@@ -1,15 +1,24 @@
-# HELP ME FILE
+# Traveller Terminal App
+
+### Important links:
+
+Git Repo - [Git Repo](https://github.com/maxckelly/travelApp)
+
+
+## How to Run
 
 This file will help you get the Traveller App up and running and help you navigate through the app to have a good experience. 
 
 To build the app run:
 
-```bash
+```
 bash build.sh
+
 ```
 
-```bash
+```
 ruby app.rb
+
 ```
 
 ### Before you begin running the application please follow the below steps:
