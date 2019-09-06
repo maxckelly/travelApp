@@ -13,20 +13,21 @@ To build the app run:
 
 ```
 bash build.sh
-
 ```
 
 ```
 ruby app.rb
-
 ```
 
 ### Before you begin running the application please follow the below steps:
 
-1. Run the build.sh file in your terminal. This will install all necessary GEMS - Do this by typing `bash build.sh`
-2. Ensure that you have the following files app.rb, countries_method.rb, countries.json, travel_methods.rb, trips_class.rb, user_class.rb. 
-3. App.rb is dependant on the following files: countries_method.rb, travel_methods.rb, trips_class.rb, user_class.rb. While countries_method.rb is dependant on just countries.json.
-4. Once build.sh has install the necessary gems and all files listed above are confirmed you can begin to run the application by typing into the terminal `ruby app.rb` - This will begin running the application.
+1. Make sure you have ruby installed on your machine - I used `rbenv` - This requires homebrew to install correct version
+2. Clone repo ``` git clone https://github.com/maxckelly/travelApp.git ```
+3. `cd` into the directory you've cloned
+4. Run the build shell script file in your terminal. This will install all necessary GEMS - Do this by typing `bash build.sh`
+5. `cd` into the `dist` directory and ensure that you have the following files app.rb, countries_method.rb, countries.json, travel_methods.rb, trips_class.rb, user_class.rb. 
+6. App.rb is dependant on the following files: countries_method.rb, travel_methods.rb, trips_class.rb, user_class.rb. While countries_method.rb is dependant on just countries.json.
+7. Once build.sh has installed the necessary gems and all files listed above are confirmed you can begin to run the application by typing into the terminal `ruby app.rb` - This will begin running the application.
 
 ### How to navigate around Traveller
 - You will be presented by the following questions 1. Your name 2. Your email and 3. Your password. Please ensure email is valid - e.g. name@hotmail.com
@@ -173,6 +174,8 @@ Your outline must include:
 
     I implemented and prioritised each feature of the app with the help of a project management tool Trello. See below images to show updates of each stage. I used checklists to help manage subcategories within the tasks. Along with this deadlines and 
 
+    - To view trello board please see the following link: [Trello Board](https://trello.com/b/rZJKsH1J)
+
     ![alt](src/images/trello_start.png)
     ![alt](src/images/trello_2.png)
     ![alt](src/images/trello_3.png)
@@ -181,6 +184,8 @@ Your outline must include:
     ![alt](src/images/trello_6.png)
     ![alt](src/images/trello_7.png)
     ![alt](src/images/trello_8.png)
+    ![alt](src/images/trello_9.png)
+
 
 
 

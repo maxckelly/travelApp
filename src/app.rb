@@ -99,8 +99,15 @@ loop do
             puts "-------------------------------"
 
         when user_menu == "Download Itinerary"
-           
-            write_to_csv(trip_array, 'itinerary.csv') # This calls the method from csv_methods.rb
+
+            system('clear')
+            if trip_array.empty?
+                puts "You need to add a trip before you can download a file. Please go to create a trip"
+            else 
+                puts "You can now view your trip in the itinerary.csv file"
+                write_to_csv(trip_array, 'itinerary.csv') # This calls the method from csv_methods.rb
+            end
+
 
         when user_menu == "Exit app" # Breaks out of loop
             system('clear')
