@@ -115,8 +115,8 @@ Your outline must include:
 - how errors will be handled by the application and displayed to the user
 
 # User Interaction and Experience
-
 ### How the user will find out how to interact with / use each feature
+
 - The user will interact with each feature by selecting it on the user menu which is presented to them once they login. The user can then go into each feature by hitting the enter button on them.
 
 ![alt_text](src/images/user_menu.png)
@@ -127,72 +127,67 @@ Your outline must include:
 
 ### How errors will be handled by the application and displayed to the user
 - The errors are handled three ways
-    1. Through automated testing (See code below)
-    2. Through manual testing (See spreadsheet link)
-    3. Through if and else statement + rescues (See example below)
+1. Through automated testing (See code below)
+2. Through manual testing (See spreadsheet link)
+3. Through if and else statement + rescues (See example below)
 
-    ```
-    def increment_id_test 
-        # mock data
-        data = [
-            {
-                origin_destination: "hshd",
-                start_date_of_trip: "dhjskf",
-                end_date_of_trip: "dhjksfh",
-                destination: "hfjdhsk"
-            }
-        ]
-        # setup, calling methods
-        test_csv = 'test.csv'
-        original_length = get_length_of_csv(test_csv)
-        write_to_csv(data, test_csv)
-        new_length = get_length_of_csv(test_csv)
+```
+def increment_id_test 
+    # mock data
+    data = [
+        {
+            origin_destination: "hshd",
+            start_date_of_trip: "dhjskf",
+            end_date_of_trip: "dhjksfh",
+            destination: "hfjdhsk"
+        }
+    ]
+    # setup, calling methods
+    test_csv = 'test.csv'
+    original_length = get_length_of_csv(test_csv)
+    write_to_csv(data, test_csv)
+    new_length = get_length_of_csv(test_csv)
 
-        # test
-        if original_length < new_length
-            puts "Test passing!"
-        else 
-            puts "Test failing 😅"
-        end 
+    # test
+    if original_length < new_length
+        puts "Test passing!"
+    else 
+        puts "Test failing 😅"
     end 
+end 
 
-    increment_id_test()
-    ```
-    Below Google Spreadsheet
+increment_id_test()
+```
+Below Google Spreadsheet
 
-    [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1mnqyZbBl9RT1Z_rN7MKjGFAK8-Nhba_fc5WXT2etBJA/edit?usp=sharing)
+[Google Spreadsheet](https://docs.google.com/spreadsheets/d/1mnqyZbBl9RT1Z_rN7MKjGFAK8-Nhba_fc5WXT2etBJA/edit?usp=sharing)
 
-    ```
-    begin
-        file = File.open "countries.json" # Loads the the countries.json file    
-    rescue => exception
-        puts "File does not exist"
-    end
-    ```
+```
+begin
+    file = File.open "countries.json" # Loads the the countries.json file    
+rescue => exception
+    puts "File does not exist"
+end
+```
+### User Flow Diagram
 
-    # Implementation Plan
+- I created the user flow diagram on a program called Flowmap.
+- You can view the project via this link: [UserFlow](https://app.flowmapp.com/share/3fad24876dbe39b06eaab674fe524125/userflow/46577/) or see the image below.
 
-    I implemented and prioritised each feature of the app with the help of a project management tool Trello. See below images to show updates of each stage. I used checklists to help manage subcategories within the tasks. Along with this deadlines and 
+![User_flow](./src/images/new_user_flow.png)
 
-    - To view trello board please see the following link: [Trello Board](https://trello.com/b/rZJKsH1J)
+# Implementation Plan
 
-    ![alt](src/images/trello_start.png)
-    ![alt](src/images/trello_2.png)
-    ![alt](src/images/trello_3.png)
-    ![alt](src/images/trello_4.png)
-    ![alt](src/images/trello_5.png)
-    ![alt](src/images/trello_6.png)
-    ![alt](src/images/trello_7.png)
-    ![alt](src/images/trello_8.png)
-    ![alt](src/images/trello_9.png)
+I implemented and prioritised each feature of the app with the help of a project management tool Trello. See below images to show updates of each stage. I used checklists to help manage subcategories within the tasks. Along with this deadlines and 
 
+- To view trello board please see the following link: [Trello Board](https://trello.com/b/rZJKsH1J)
 
-
-
-
-
-
-
-
-
-
+![alt](src/images/trello_start.png)
+![alt](src/images/trello_2.png)
+![alt](src/images/trello_3.png)
+![alt](src/images/trello_4.png)
+![alt](src/images/trello_5.png)
+![alt](src/images/trello_6.png)
+![alt](src/images/trello_7.png)
+![alt](src/images/trello_8.png)
+![alt](src/images/trello_9.png)
