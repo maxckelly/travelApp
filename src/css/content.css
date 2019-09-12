@@ -20,5 +20,30 @@
   font-size: 6em;
   color: white;
   font-weight: bold;
-   transform: scaleX(-1);
+  transform: scaleX(-1);
+  margin-bottom: 0px;
 }
+
+.btn-container {
+  transform: scaleX(-1);
+  margin-right: 10%;
+  margin-top: 1em;
+}
+
+.btn {
+  background: var(--main-orange);
+  border: 1px solid var(--main-grey);
+  border-radius: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:active {
+  background: var(--main-green);
+}
+
