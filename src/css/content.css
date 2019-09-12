@@ -1,9 +1,24 @@
 .background {
-  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url("../images/travel_photo_one.jpg");
+  background-image: linear-gradient(-225deg, rgba(0,0,0,0.61) 0%, rgba(0,0,0,0.61) 50%), url("../images/travel_photo_one.jpg");
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
   height: calc(100vh - 50px);
+  transform: scaleX(-1);
 }
 
+.wording {
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10%;
+}
 
+.hero-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6em;
+  color: white;
+  font-weight: bold;
+   transform: scaleX(-1);
+}
