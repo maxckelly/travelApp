@@ -1,0 +1,19 @@
+/* Import of CSS files */
+@import "./navbar.css";
+@import "./container.css";
+@import "./content.css";
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+  --main-orange: #EF6248;
+  --main-grey: #35393C;
+  --shadow: 0 2px 4px 0 rgba(0,0,0, 0.10);
+  --shadow-lg: 0 15px 30px 0 rgba(0,0,0, 0.11);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0px;
+}

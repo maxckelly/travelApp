@@ -60,3 +60,5 @@ end
 - I have also been working on documentation in the README.md file, user testing and more.
 ### Friday 6th September 2019
 
+- Fixed a error: I encountered an error which was if you had no trips created and you clicked "Download Itinerary" it would cause the app to crash. I implemented an if statement saying if the trips_array is empty then print to screen the following and loop over again. 
+
